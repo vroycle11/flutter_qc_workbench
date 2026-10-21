@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "compile",
+      "path": "integrations/vscode",
+      "group": "build",
+      "problemMatcher": ["$tsc"],
+      "label": "npm: compile - integrations/vscode"
+    }
+  ]
+}

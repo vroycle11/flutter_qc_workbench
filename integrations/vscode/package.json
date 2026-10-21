@@ -1,0 +1,150 @@
+{
+  "name": "flutter-qa-workbench",
+  "displayName": "Flutter QA Workbench",
+  "description": "Professional UI quality inspector, accessibility checker, and layout analyzer for Flutter applications.",
+  "version": "0.1.0",
+  "publisher": "VroyCLe",
+  "author": {
+    "name": "Vaibhav Ghadge",
+    "url": "https://www.linkedin.com/in/vaibhav-ghadge-315841168/"
+  },
+  "license": "MIT",
+  "icon": "resources/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vroycle11/flutter_qc_workbench"
+  },
+  "homepage": "https://github.com/vroycle11/flutter_qc_workbench",
+  "bugs": {
+    "url": "https://github.com/vroycle11/flutter_qc_workbench/issues"
+  },
+  "categories": [
+    "Linters",
+    "Testing",
+    "Other"
+  ],
+  "keywords": [
+    "flutter",
+    "dart",
+    "accessibility",
+    "a11y",
+    "quality",
+    "layout",
+    "testing"
+  ],
+  "activationEvents": [
+    "onView:flutterQaWorkbench.mainPanel",
+    "workspaceContains:**/pubspec.yaml"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "flutterQaWorkbench.runScan",
+        "title": "Run QA Scan",
+        "category": "QA Workbench",
+        "icon": "$(play)"
+      },
+      {
+        "command": "flutterQaWorkbench.cancelScan",
+        "title": "Cancel QA Scan",
+        "category": "QA Workbench",
+        "icon": "$(debug-stop)"
+      },
+      {
+        "command": "flutterQaWorkbench.showReport",
+        "title": "Show QA Report",
+        "category": "QA Workbench"
+      },
+      {
+        "command": "flutterQaWorkbench.exportJson",
+        "title": "Export JSON Report",
+        "category": "QA Workbench"
+      },
+      {
+        "command": "flutterQaWorkbench.exportSarif",
+        "title": "Export SARIF Report",
+        "category": "QA Workbench"
+      },
+      {
+        "command": "flutterQaWorkbench.openSettings",
+        "title": "Open QA Settings",
+        "category": "QA Workbench",
+        "icon": "$(gear)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "qaWorkbench",
+          "title": "QA Workbench",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "qaWorkbench": [
+        {
+          "type": "webview",
+          "id": "flutterQaWorkbench.mainPanel",
+          "name": "QA Workbench",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Flutter QA Workbench",
+      "properties": {
+        "flutterQaWorkbench.autoScanOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically run QA scan when a Dart file is saved."
+        },
+        "flutterQaWorkbench.debounceMs": {
+          "type": "number",
+          "default": 1000,
+          "description": "Debounce delay in milliseconds for auto-scan."
+        },
+        "flutterQaWorkbench.dartSdkPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the Dart SDK. Auto-detected if empty."
+        }
+      }
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "flutterQaWorkbench.runScan",
+          "when": "view == flutterQaWorkbench.mainPanel",
+          "group": "navigation"
+        },
+        {
+          "command": "flutterQaWorkbench.openSettings",
+          "when": "view == flutterQaWorkbench.mainPanel",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run copy-qa-core && npm run compile",
+    "copy-qa-core": "node scripts/copy-qa-core.js",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package --no-dependencies",
+    "publish:ovsx": "ovsx publish flutter-qa-workbench-0.1.0.vsix",
+    "publish:vscode": "vsce publish --no-dependencies",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.0.0",
+    "ovsx": "^1.3.0",
+    "typescript": "^5.3.0"
+  }
+}

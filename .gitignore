@@ -43,3 +43,9 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Node / VS Code Extension
+node_modules/
+*.vsix
+/integrations/vscode/out/
+/integrations/vscode/qa_core/

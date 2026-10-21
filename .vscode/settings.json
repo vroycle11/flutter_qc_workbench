@@ -1,0 +1,3 @@
+{
+  "typescript.tsdk": "integrations/vscode/node_modules/typescript/lib"
+}

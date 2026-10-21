@@ -1,0 +1,10 @@
+.vscode/**
+.vscode-test/**
+src/**
+tsconfig.json
+**/*.map
+.gitignore
+node_modules/**
+qa_core/.dart_tool/**
+qa_core/test/**
+scripts/**

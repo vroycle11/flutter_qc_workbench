@@ -1,0 +1,22 @@
+name: qa_core
+description: >
+  Core analysis engine for Flutter QA Workbench. Provides source-level
+  accessibility and layout quality rules, finding models, configuration,
+  and report generation.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  analyzer: ^7.4.0
+  yaml: ^3.1.3
+  path: ^1.9.1
+  glob: ^2.1.3
+  args: ^2.6.0
+  meta: ^1.16.0
+
+dev_dependencies:
+  test: ^1.25.15
+  lints: ^5.1.1
